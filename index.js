@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const GuardianClient = require('./core/client.js');
-const client = new GuardianClient();
+const Client = require('./src/core/client.js');
+const client = new Client();
 
 client.login(process.env.TOKEN);

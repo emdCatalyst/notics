@@ -4,18 +4,14 @@ const {
     CommandHandler,
     ListenerHandler
 } = require('discord-akairo');
-const { ownerID, defaultPrefix } = require('../config.js');
-const db = require('quick.db');
 const Utils = require('./utils.js');
+const ToDoList = require('../models/ToDoList')
 
-require('../structures/Guild.js');
-require('../structures/GuildMember.js');
-
-module.exports = class GuardianClient extends AkairoClient {
+module.exports = class Client extends AkairoClient {
     constructor() {
         super(
             {
-                ownerID
+                ownerID: ['401406828820299777', '480407581085532180', '353760389747441665']
             },
             {
                 disableEveryone: true
@@ -24,15 +20,15 @@ module.exports = class GuardianClient extends AkairoClient {
 
         this.commandHandler = new CommandHandler(this, {
             directory: path.join(__dirname, '..', 'commands/'),
-            prefix: message =>
-                message.guild ? message.guild.prefix : defaultPrefix
+            prefix: ['n!']
         });
 
         this.listenerHandler = new ListenerHandler(this, {
             directory: path.join(__dirname, '..', 'listeners/')
         });
-        
-        this.db = db;
+        this.db = {
+            ToDoList
+        }
         this.Utils = new Utils(this);
     }
 

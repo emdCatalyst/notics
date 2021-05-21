@@ -9,7 +9,7 @@ class InfoCommand extends Command {
 
     async exec(message) {
         const lines = [
-            `Current Prefix: \`${message.guild.prefix}\``,
+            `Current Prefix: \`${this.client.commandHandler.prefix.join(' ')}\``,
             `Commands Loaded: \`${this.client.commandHandler.modules.size}\``,
             `Command Aliases: \`${this.client.commandHandler.aliases.size}\``,
             `Guilds: \`${this.client.guilds.cache.size}\``,

@@ -106,6 +106,7 @@ dist
 #Quick.db
 json.sqlite
 
+node_modules
 # Other
 package-lock.json
 .vs/
