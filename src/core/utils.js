@@ -1,4 +1,5 @@
 const { get } = require('axios');
+require('dotenv').config()
 
 module.exports = class Utils {
     constructor(client) {
