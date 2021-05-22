@@ -10,7 +10,7 @@ Use the package manager [NPM](https://docs.npmjs.com/) to install Notics.
 npm install
 npm start
 ```
-
+add your token in ``.env`` and start working ...
 to start using the bot use this command: ```n!help```
 
 ## Inspiration
