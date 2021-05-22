@@ -1,18 +1,17 @@
 const {
-  Schema,
-  model
-} = require('mongoose');
+    Schema, model
+} = require('mongoose'); 
 
 const schema = new Schema({
-  name: String,
-  dm: Boolean,
-  reminderID: String,
-  ownerID: String,
+    name: String,
+    dm: Boolean,
+    reminderID: String,
+    ownerID: String,
   channelID: {
     default: null,
     type: 'string'
   },
-  finishsAt: String
+    finishsAt: String
 }, {
   timestamps: true
 });

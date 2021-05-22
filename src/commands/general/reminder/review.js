@@ -1,6 +1,4 @@
-const {
-  Command
-} = require('discord-akairo');
+const { Command }= require('discord-akairo');
 const ms = require('ms');
 class ReviewCommand extends Command {
   constructor() {
@@ -11,32 +9,28 @@ class ReviewCommand extends Command {
       },
     })
   }
-
-  * args() {
-    const reminder = yield {
-      type: 'reminder',
-      match: 'content',
-      prompt: {
-        start: 'Input your reminder\'s `name` or `id` \n Write `all` to diplay all of your reminders',
-        retry: 'I cannot find the requested reminder'
-      }
-    }
-    return {
-      reminder
-    }
+  
+  *args() {
+        const reminder = yield {
+          type: 'reminder',
+          match: 'content',
+          prompt: {
+            start: 'Input your reminder\'s `name` or `id` \n Write `all` to diplay all of your reminders',
+            retry: 'I cannot find the requested reminder'
+          }
+        }
+        return {reminder}
   }
   async exec(message, args) {
     console.log(args.reminder)
-    if (Array.isArray(args.reminder)) {
-      return message.channel.send(args.reminder.map(({
-        name
-      }) => `\`${name}\``).join(' ') || 'empty')
+    if(Array.isArray(args.reminder)) {
+      return message.channel.send(args.reminder.map(({name}) => `\`${name}\``).join(' ') || 'empty')
     }
     const isOwner = typeof args.reminder == 'object';
-    if (!isOwner) return message.channel.send(args.reminder);
+    if(!isOwner) return message.channel.send(args.reminder);
     const embed = this.client.util.embed()
-      .setTitle(args.reminder.name)
-      .addField('Ends in', ms(args.reminder.finishsAt - Date.now()))
+    .setTitle(args.reminder.name)
+    .addField('Ends in', ms(args.reminder.finishsAt - Date.now()))
     message.channel.send(embed)
   }
 }

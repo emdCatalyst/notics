@@ -1,7 +1,6 @@
 const {
-    Schema,
-    model
-} = require('mongoose');
+    Schema, model
+} = require('mongoose'); 
 
 const schema = new Schema({
     name: String,
@@ -11,11 +10,20 @@ const schema = new Schema({
     children: [{
         content: String,
         done: {
-            type: Boolean,
-            default: false
+      type: Boolean,
+      default: false
+    },
+        listID: {
+            default: '',
+            type: String
         }
     }],
+    done: {
+      type: Boolean,
+      default: false
+    },
+  
 }, {
-    timestamps: true
+  timestamps: true
 });
 module.exports = model('ToDoList', schema);

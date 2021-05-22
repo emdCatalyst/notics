@@ -1,9 +1,5 @@
-const {
-    Command
-} = require('discord-akairo');
-const {
-    MessageEmbed
-} = require('discord.js');
+const { Command } = require ('discord-akairo');
+const { MessageEmbed } = require ('discord.js');
 
 class HelpCommand extends Command {
     constructor() {
@@ -14,16 +10,16 @@ class HelpCommand extends Command {
                 usage: '[command]'
             },
             ratelimit: 2,
-            args: [{
-                id: 'command',
-                type: 'commandAlias'
-            }]
+            args: [
+                {
+                    id: 'command',
+                    type: 'commandAlias'
+                }
+            ]
         });
     }
 
-    async exec(message, {
-        command
-    }) {
+    async exec(message, {command}) {
         const prefix = this.handler.prefix;
         if (!command) {
             const embed = new MessageEmbed()
@@ -48,6 +44,6 @@ class HelpCommand extends Command {
 
         return message.channel.send(embed);
     }
-
+    
 }
 module.exports = HelpCommand;
