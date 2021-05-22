@@ -1,7 +1,4 @@
-const {
-    Command,
-    Flag
-} = require('discord-akairo');
+const { Command, Flag } = require('discord-akairo');
 
 class ToDoListCommand extends Command {
     constructor() {
@@ -10,17 +7,16 @@ class ToDoListCommand extends Command {
             description: {
                 content: 'Control todolists, create, remove or edit an existing todolist'
             },
-            ratelimit: 2
         });
     }
-
-    * args(message) {
+    
+    *args(message) {
         const subCommand = yield {
-            type: ['create', 'delete', 'view', 'edit'],
-            otherwise: 'Please append `create`, `delete`, `edit` or `view` to this command'
+          type: ['create', 'delete', 'view', 'edit'],
+          otherwise: 'Please append `create`, `delete`, `edit` or `view` to this command'
         }
         return Flag.continue(subCommand);
-
+        
     }
     exec() {}
 }
