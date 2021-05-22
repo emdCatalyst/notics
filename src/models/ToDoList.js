@@ -1,17 +1,21 @@
 const {
-    Schema, model
-} = require('mongoose'); // حقوق جيك يمنيوك
+    Schema,
+    model
+} = require('mongoose');
 
 const schema = new Schema({
+    name: String,
     listID: String,
+    ownerID: String,
+    createdAt: String,
     children: [{
         content: String,
-        done: Boolean,
-        listID: {
-            default: '',
-            type: String
+        done: {
+            type: Boolean,
+            default: false
         }
     }],
-    done: Boolean
+}, {
+    timestamps: true
 });
 module.exports = model('ToDoList', schema);
